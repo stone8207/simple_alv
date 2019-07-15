@@ -1,0 +1,34 @@
+*&---------------------------------------------------------------------*
+*& Report  YDEMO01
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT YDEMO01.
+
+data o_alv type ref to zcl_alv.
+data t_mara type table of mara.
+
+start-of-selection.
+select * into table t_mara from mara up to 100 rows.
+
+zcl_alv=>create( changing ct_table = t_mara ro_alv = o_alv ).
+o_alv->set_fcat( |fieldname:MATNR,TEXT:物料描述,HOTSPOT:{ ABAP_TRUE };| &
+                 |fieldname:MTART,TEXT:物料类型;|
+    )->set_layo( |cwidth_opt:X| ).
+o_alv->set_event( iv_eventid = 'HOTSPOT_CLICK' iv_formname = 'HOTSPOT' ).
+o_alv->title = '演示程序'.
+o_alv->display( ).
+
+form hotspot using
+       E_ROW_ID   TYPE LVC_S_ROW
+       E_COLUMN_ID 	TYPE LVC_S_COL
+       ES_ROW_NO 	TYPE LVC_S_ROID
+       SENDER	type ref to zcl_alv
+      .
+  data lw_mara type mara.
+  read table t_mara into lw_mara index es_row_no-row_id.
+  message lw_mara-matnr type 'I'.
+endform.
