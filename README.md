@@ -1,19 +1,17 @@
-# simple_alv
-oo alv封装,使得调用和function alv一样简单.
-由于本人的系统是7.3版本,falv的7.3版本的代码没有随着更新,
-个人也有些其他的需求和想法,所以自己封了一个alv,
-其中部分代码参考了falv,也借鉴了falv的设计思路,
-在此感谢fidley大神.
+### simple_alv
+ abap oo alv like falv,code based on nw731 version.  
+ cause falv has no nw731 version update,so i made one myself.
 
-### 第一版特性:
-1. 封装oo alv,力求和function一样简单调用,又能保持oo alv的灵活性
-2. 可以全屏显示,或弹窗显示,弹窗显示必须基于一个已有屏幕的情况才能使用.
-3. 增加collection_mode参数,可以将显示的字段进行合计(collect 内表操作),达成类似于excel数据透视表的拖拽自动合计的效果.
+### features:
+1. make oo alv as easy-use as function alv,and still flexiable.
+2. display mode: full-screen display and pop-up dislpay.  
+   with popup display,cause i use dialogbox container,so u need to use this mode based on a screen.
+3. collection_mode:collect table by displayed field(output = X),like excel pivot-table.
 
-### 安装方法
-1. 使用saplink,导入NUGG_ZCL_ALV.nugg文件完成自动安装
-2. demo程序未包括在nugg中,请按照自己需求copy到系统中.
+### how to install
+1. use saplink,import NUGG_ZCL_ALV.nugg.
+2. demo program was not included in nugg file.u need copy and paste to system by yourself.
 
-### 待完善
-1. demo待完善.
+### tobe continue
+1. more demos.
 
